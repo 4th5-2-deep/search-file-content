@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load document_extras %}
+
+{% block body %}
+
+<h1>Search</h1>
+
+<ul>
+  {% for document in documents %}
+    <li>
+      <a href="{{ document.markdown.url }}">{{ document.markdown }}</a>
+      <p>{{ document.markdown_content|highlight:query|safe }}</p>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

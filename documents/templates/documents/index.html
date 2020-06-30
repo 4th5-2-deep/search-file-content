@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Documents</h1>
+
+<form action="{% url 'documents:search' %}">
+  <input type="text" name="q">
+  <input type="submit" value="Search">
+</form>
+
+
+<h3>Files</h3>
+
+<a href="{% url 'documents:new' %}">New</a>
+
+<ul>
+{% for document in documents %}
+  <li>
+    <a href="{{ document.markdown.url }}">{{ document.markdown }}</a>
+  </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
